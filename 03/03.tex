@@ -1,0 +1,122 @@
+\documentclass[12pt]{article}
+\usepackage[margin=0.8in]{geometry}
+\usepackage{relsize}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{enumitem}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{mathptmx}
+\usepackage{graphicx}
+\usepackage{qtree}
+\graphicspath{ {./images/} }
+
+\hyphenpenalty=10000
+\setlength{\parindent}{0pt}
+
+\newcommand\buf{\vspace{0.10in}}
+\newcommand\bicond{\mathrel{\leftrightarrow}}
+\let\union\cup
+\let\intersect\cap
+
+% define command for answers
+\usepackage{xcolor}
+% Switched answer from command to environment
+\newenvironment{answer}{\fontfamily{ptm}\selectfont \smaller[1] ANSWER: }{}
+%\newcommand{\answer}[1]{{\larger[1]\textcolor{red}{#1}}}
+
+\begin{document}
+
+\begin{center}
+CS 0441: Discrete Structures \\
+{\smaller[1] Spring 2020} \\
+
+\vspace {0.25in}
+
+Recitation 3 \hspace {0.25in} Thursday January 30
+
+\vspace{0.25in}
+
+\null \hfill
+%}
+
+\end{center}
+
+Terms to review:
+
+\begin{itemize}
+	\item Rules of Inference table on page 76, NOTE: if $p \to q$ and you have $q$ it is incorrect to assume $p$ must be true.
+	\item Rules of Inference for Quantified Statements page 80, $c$ is an arbitrary instance in the domain.
+	\item Fallacies on page 79
+\end{itemize}
+
+\buf
+
+\begin{enumerate} % start main problems
+
+%\setcounter{enumi}{34}
+
+%Problem 13 from 1.6
+
+\item[(13)] For each of these arguments, explain which rules of inference are used for each step.
+
+\begin{enumerate}
+	\item[(b)] ``Somebody in this class enjoys whale watching, Every person who enjoys whale watching cares about ocean pollution. Therefore, there is a person in this class who cares about ocean pollution.''
+	
+	\begin{answer}
+		Let $c(x)$ be ``x is in this class'',  let $w(x)$ be ``x enjoys whale watching'', and let $p(x)$ be ``x cares about ocean pollution''. The premises are $\exists x(c(x) \wedge w(x))$ and $\forall x (w(x) \to p(x))$. From the first premise using existential instantiation, $c(y) \wedge w(y)$ for an arbitrary person $y$. Using simplification, $w(y)$ follows. Using the second premise and universal instantiation, $w(y) \to p(y)$ follows. Using modus ponens, $p(y)$ follows, and by conjunction, $c(y) \wedge p(y)$ follows. Finally, by existential generalization, the desired conclusion, $\exists x(c(x) \wedge p(x))$, follows.
+	\end{answer}
+
+	\item[(d)] ``Everyone in New Jersey lives within 50 miles of the ocean. Someone in New Jersey has never seen the ocean. Therefore, someone who lives within 50 miles of the ocean has never seen the ocean.''
+	
+	\begin{answer}
+		Let $j(x)$ be ``x is in New Jersey.'', let $f(x)$ be ``x lives within 50 miles of the ocean'', let $s(x)$ be ``x has seen the ocean''. The premises are $\forall x (j(x) \to f(x))$ and $\exists x (j(x) \wedge \neg s(x))$. The second hypothesis and existential instantiation imply that $j(y) \wedge \neg s(y)$ for a particular person y. By simplification, $j(y)$ for this person y. Using universal instantiation and the first premise, $j(y) \to f(y)$, and by modus ponens $f(y)$ follows. By simplification, $\neg s(y)$ follows from $j(y) \wedge \neg s(y)$. So $f(y) \wedge \neg s(y)$ follows by conjuction. Finally, $\exists x (f(x) \wedge \neg s(x))$ follows from existential generalization.
+	\end{answer}
+\end{enumerate}
+
+\vspace{0.20in}
+
+%\setcounter{enumi}{36}
+
+%Problem 15 from 1.6
+
+\item[(15)] For each of these arguments determine whether the arguement is correct or incorrect and explain why.
+\buf
+
+\begin{enumerate}
+	\item[(b)] Every computer science major takes discrete mathematics. Natasha is taking discrete mathematics. Therefore, Natasha is a computer science major.
+	
+	\begin{answer}
+		Invalid; Fallacy of Affirming the conclusion. Saying that Natasha is taking discrete mathematics does not necessarily mean that Natasha is a computer science major since $p \to q$ is always true when p is False.
+	\end{answer}
+
+	\item[(c)] All parrots like fruit. My pet bird is not a parrot. Therefore, my pet bird does not like fruit.
+	
+	\begin{answer}
+		Invalid; Fallacy of Denying the Hypothesis. While we know that if a bird is a parrot, then the bird likes fruit, this would imply that the bird likes fruit. However, it may also be the case that the bird is not a parrot and does like fruit since $p \to q$ is still true when p is False and q is True.
+	\end{answer}
+\end{enumerate}
+
+\vspace{0.20in}
+
+%Problem 23 from 1.6
+\item[(23)] Identify the error(s) in this argument that supposedly shows that if $\exists x P(x) \wedge \exists x Q(x)$ is true then $\exists x (P(x) \wedge Q(x))$ is true.
+
+\begin{align}
+	&\exists x P(x) \vee \exists x Q(x) &\text{ Premise}\\
+	&\exists x P(x) &\text{ Simplification from (1)}\\
+	&P(c) &\text{ Existential instantiation from (2)}\\
+	&\exists x Q(x) &\text{ Simplification from (1)}\\
+	&Q(c) &\text{ Existential instantiation from (4)}\\
+	&P(c) \wedge Q(c) &\text{ Conjunction from (3) and (5)}\\
+	&\exists x (P(x) \wedge Q(x)) &\text{ Existential generalization}\\
+\end{align}
+
+\begin{answer}
+	The error occurs in step (5), because we cannot assume, as is done here, that the $c$ that makes $P$ true is the same as the $c$ that makes the $Q$ true. Typically if we're referring to more than one arbitrary person, we will use different variables i.e P(c) and Q(d) for some arbitrary c and some other arbitrary d.
+\end{answer}
+
+\end{enumerate} % end main problems
+
+\end{document}
