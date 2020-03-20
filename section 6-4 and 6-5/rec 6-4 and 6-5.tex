@@ -1,0 +1,135 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{relsize}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{enumitem}
+
+\hyphenpenalty=10000
+\setlength{\parindent}{0pt}
+
+\newcommand\bicond{\mathrel{\leftrightarrow}}
+\let\union\cup
+\let\intersect\cap
+
+\begin{document}
+
+\begin{center}
+CS 441: Discrete Structures for Computer Science \\
+{\smaller[1] Spring 2020} \\
+
+\vspace {0.25in}
+
+Recitation on 6.3, 6.4, 6.5
+\end{center}
+
+\vspace{0.25in}
+
+{\smaller[1]
+\textbf{Name:} \hrulefill
+\hspace{1em}
+\textbf{Username (abc123):} \rule{1.25in}{0.4pt}
+
+\null \textbf{Recitation:}
+\hspace{2em}
+Thursday 12:00--12:50 \hfill
+}
+
+\begin{enumerate} % start main problems
+
+% PROBLEMS 5 and 6 from 7th Edition - section 6.3
+
+\item Find the value of each of these quantities.
+
+\begin{enumerate}
+
+    \item $P(6, 3)$
+    \item $C(5, 1)$
+    \item $P(8, 5) + C(5, 3)$
+
+\end{enumerate}
+
+\vspace{1.5in}
+
+% PROBLEM 19 from 7th Edition - section 6.3
+
+\item A coin is flipped 10 times where each flip comes up either heads or tails. How many possible outcomes
+
+\begin{enumerate}
+
+    \item are there in total?
+    \item contain exactly two heads?
+    \item contain at most three tails?
+
+\end{enumerate}
+
+\newpage
+
+
+% PROBLEM 3 from 7th Edition - section 6.4
+
+\item Find the expansion of of the following binomials.
+
+\begin{enumerate}
+
+    \item $(x+y)^{3}$
+    \item $(s+t)^{5}$
+
+\end{enumerate}
+
+\vspace{2in}
+% PROBLEM 4 inspired by lecture slides for Pascal's Identity
+
+\item Compute the following values using Pascal's Identity for $C(n, r)$.
+
+\begin{enumerate}
+
+    \item $C(6, 4)$
+    \item $C(7, 5)$
+
+\end{enumerate}
+
+\newpage
+
+
+% PROBLEM 3 from 7th Edition - section 6.5 (slightly tweaked)
+
+\item How many strings of six letters are there
+
+\begin{enumerate}
+
+    \item if letters are replaced?
+    \item if letters are NOT replaced?
+
+\end{enumerate}
+
+\vspace{2in}
+
+%Problems 23, 21,  from 7th Edition - section 6.5 and part (c) inspired by lecture
+\item How many ways are there to
+
+\begin{enumerate}
+
+    \item distribute six indistinguishable objects into nine distinguishable boxes?
+    \item distribute six distinguishable balls into four indistinguishable boxes?
+
+\end{enumerate}
+
+\end{enumerate} % end main problems
+
+\newpage
+
+\begin{center}
+    FORMULAS
+\end{center}
+
+\begin{align}
+    &(x+y)^{n} = \sum_{j=0}^{n} C(n, j) x^{n-j} y^{j} \\
+    &C(n, 0) = C(n, n) = 1 \text{ and } C(n+1, k) = C(n+1, k-1) + C(n, k) \\
+    &\sum_{j=1}^{k} S(n, j) = \sum_{j=1}^{k} \frac{1}{j!} \sum_{i=0}^{j-1} (-1)^{i} C(j, i) (j-i)^{n} \\
+    &P(n, r) = \frac{n!}{(n-r)!} \\
+    &C(n, r) = \frac{n!}{(n-r)! r!} \\
+\end{align}
+
+\end{document}
+
