@@ -1,0 +1,272 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{relsize}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{enumitem}
+
+\hyphenpenalty=10000
+\setlength{\parindent}{0pt}
+
+\newcommand\buf{\vspace{0.10in}}
+\newcommand\bicond{\mathrel{\leftrightarrow}}
+\let\union\cup
+\let\intersect\cap
+
+% define command for answers
+\usepackage{xcolor}
+% Switched answer from command to environment
+\newenvironment{answer}{\fontfamily{ptm}\selectfont \smaller[1] ANSWER: }{}
+%\newcommand{\answer}[1]{{\larger[1]\textcolor{red}{#1}}}
+
+\begin{document}
+
+\begin{center}
+CS 441: Discrete Structures for Computer Science \\
+{\smaller[1] Spring 2020} \\
+
+\vspace {0.25in}
+
+Recitation on sections 6.3, 6.4, 6.5
+\end{center}
+
+\vspace{0.25in}
+
+{\smaller[1]
+\textbf{Name:} \hrulefill
+\hspace{1em}
+\textbf{Username (abc123):} \rule{1.25in}{0.4pt}
+
+\null \textbf{Recitation:}
+\hfill
+Thursday 12:00--12:50 \hfill
+}
+
+\begin{enumerate} % start main problems
+
+% PROBLEMS 5 and 6 from 7th Edition - section 6.3
+
+\item Find the value of each of these quantities.
+
+\begin{enumerate}
+
+    \item $P(6, 3)$
+    \buf
+
+    \begin{answer}
+        $P(6,3) = \frac{6!}{(6-3)!} = \frac{6!}{3!} = (6)(5)(4) = 120$
+    \end{answer}
+    \buf
+
+    \item $C(5, 1)$
+    \buf
+
+    \begin{answer}
+        $C(5, 1) = \frac{5!}{(5-1)!(1!)} = \frac{5!}{4!} = 5$
+    \end{answer}
+    \buf
+
+    \item $P(8, 5) + C(5, 3)$
+    \buf
+
+    \begin{answer}
+        $P(8,5) = \frac{8!}{(8-5)!} = \frac{8!}{3!} = (8)(7)(6)(5)(4) = 6720$
+        $C(5,3) = \frac{5!}{(5-3)!(3!)} = \frac{5!}{(2!)(3!)} = (5)(2) = 10$
+        $P(8,5) + C(5, 3) = 6720 + 10 = 6730$
+    \end{answer}
+    \buf
+
+\end{enumerate}
+
+%\vspace{1.5in}
+
+% PROBLEM 19 from 7th Edition - section 6.3
+
+\item A coin is flipped 10 times where each flip comes up either heads or tails. How many possible outcomes
+
+\begin{enumerate}
+
+    \item are there in total?
+    \buf
+
+    \begin{answer}
+        Since each flip can be either heads or tails, we can simply apply the product rule. Since each flip has 2 possibilities and there are 10 flips, there are a total of $2^{10} = 1024$ possible outcomes.
+    \end{answer}
+    \buf
+
+    \item contain exactly two heads?
+    \buf
+
+    \begin{answer}
+        In order to flip 10 times and get exactly two heads, we need to specify the two flips that are heads. There are $C(10, 2) = \frac{10!}{(10-2)!(2!)} = \frac{10!}{(8!)(2!)} = \frac{(10)(9)}{2} = (5)(9) = 45$ possible outcomes.
+    \end{answer}
+    \buf
+
+    \item contain at most three tails?
+    \buf
+
+    \begin{answer}
+        Containing at MOST three tails means there can be either three tails, two tails, one tail, or no tails. Here we can use the sum rule where each event is mutually exclusive. There are $C(10,3) + C(10, 2) + C(10, 1) + C(10, 0) = 120 + 45 + 10 + 1 = 176$ possible outcomes.
+    \end{answer}
+    \buf
+
+\end{enumerate}
+
+%\newpage
+
+
+% PROBLEM 3 from 7th Edition - section 6.4
+
+\item Find the expansion of of the following binomials.
+
+\begin{enumerate}
+
+    \item $(x+y)^{3}$
+    \buf
+
+    \begin{answer}
+        We can apply the binomial theorem to find the expansion.
+        \begin{align*}
+            (x+y)^{3} &= \sum_{j=0}^{3} C(3, j) x^{3-j}y^{j} \\
+            &= C(3, 0) x^{3} + C(3, 1) x^{2}y + C(3, 2) xy^{2} + C(3, 3) y^{3} \\
+            &= x^{3} + 3x^{2}y + 3xy^{2} + y^{3}
+        \end{align*}
+    \end{answer}
+    \buf
+
+    \item $(s+t)^{5}$
+    \buf
+
+    \begin{answer}
+        We can apply the binomial theorem to find the expansion.
+        \begin{align*}
+            (x+y)^{5} &= \sum_{j=0}^{5} C(5, j) x^{5-j} y^{j} \\
+            &= C(5, 0)x^{5} + C(5, 1)x^{4}y + C(5, 2)x^{3}y^{2} + C(5, 3)x^{2}y^{3} \\
+            &+ C(5, 4)xy^{4} + C(5, 5)y^{5} \\
+            &= x^{5} + 5x^{4}y + 10x^{3}y^{2} + 10x^{2}y^{3} + 5xy^{4} + y^{5}
+        \end{align*}
+    \end{answer}
+    \buf
+
+\end{enumerate}
+
+%\vspace{2in}
+% PROBLEM 4 inspired by lecture slides for Pascal's Identity
+
+\item Compute the following values using Pascal's Identity for $C(n, r)$.
+
+\begin{enumerate}
+
+    \item $C(6, 4)$
+    \buf
+
+    \begin{answer}
+        \begin{align*}
+            C(6, 4) &= C(5, 3) + C(5, 4) \\
+            &= C(4, 2) + C(4, 3) + C(4, 3) + C(4, 4) \\
+            &= C(4, 2) + (2)C(4, 3) + 1 \\
+            &= C(3, 1) + C(3, 2) + (2)[C(3, 2) + C(3, 3)] + 1 \\
+            &= C(3, 1) + (3)C(3, 2) + 3 \\
+            &= C(2, 0) + C(2, 1) + (3)[C(2, 1) + C(2, 2)] + 3 \\
+            &= (4)C(2, 1) + 7 \\
+            &= (4)[C(1, 0) + C(1, 1)] + 7 \\
+            &= 15
+        \end{align*}
+    \end{answer}
+    \buf
+
+    \item $C(4, 3)$
+    \buf
+
+    \begin{answer}
+        \begin{align*}
+            C(4, 3) &= C(3, 2) + C(3, 3) \\
+            &= C(2, 1) + C(2, 2) + 1 \\
+            &= C(1, 0) + C(1, 1) + 2\\
+            &= 4
+        \end{align*}
+    \end{answer}
+    \buf
+
+\end{enumerate}
+
+%\newpage
+
+
+% PROBLEM 3 from 7th Edition - section 6.5 (slightly tweaked)
+
+\item How many strings of six letters (A-Z) are there
+
+\begin{enumerate}
+
+    \item if letters are replaced?
+    \buf
+
+    \begin{answer}
+        Since the letters can be replaced, we can apply the product rule. There are $26^{6} = 308915776$ possible strings of six letters.
+    \end{answer}
+    \buf
+
+    \item if letters are NOT replaced?
+    \buf
+
+    \begin{answer}
+        Since the letters are NOT replaced, the order of a letter matters. We can use a simple permutation $P(26, 6) = \frac{26!}{(26-6)!} = (26)(25)(24)(23)(22)(21) = 165765600$ possible strings of six letters.
+    \end{answer}
+    \buf
+
+\end{enumerate}
+
+%\vspace{2in}
+
+%Problems 23, 21,  from 7th Edition - section 6.5 and part (c) inspired by lecture
+\item How many ways are there to
+
+\begin{enumerate}
+
+    \item distribute six indistinguishable objects into nine distinguishable boxes?
+    \buf
+
+    \begin{answer}
+        We can use the stars and bars method to determine the number of possibilities. There are $C(6 + 9 - 1, 6) = C(14, 6) = \frac{14!}{(14-6)!(6!)} = \frac{14!}{(8!)(6!)} = (7)(13)(11)(3) = 3003$ possibilities.
+    \end{answer}
+    \buf
+
+    \item distribute six distinguishable balls into two indistinguishable boxes?
+    \buf
+
+    \begin{answer}
+        We can use Sterling Numbers of the second kind to determine the number of possibilities.
+        \begin{align*}
+            \sum_{j=1}^{2} S(6, j) &= \sum_{j=1}^{2} \frac{1}{j!} \sum_{i=0}^{j-1}(-1)^{i} C(j, i) (j-i)^{6} \\
+            \text{For j=1} \\
+            &= C(1, 0) + (1)^{6} = 1 \\
+            \text{For j=2} \\
+            &= \frac{1}{2} \sum_{i=0}^{1}(-1)^{i}C(2, i)(2-i)^{6} \\
+            &= \frac{1}{2}[(2)^{6} + (-2)(1)^{6}] = \frac{1}{2}[62] = 31 \\
+            31 + 1 = 32
+        \end{align*}
+        There are 32 possibilities. 
+    \end{answer}
+    \buf
+
+\end{enumerate}
+
+\end{enumerate} % end main problems
+
+\newpage
+
+\begin{center}
+    FORMULAS
+\end{center}
+
+\begin{align}
+    &(x+y)^{n} = \sum_{j=0}^{n} C(n, j) x^{n-j} y^{j} \\
+    &C(n, 0) = C(n, n) = 1 \text{ and } C(n+1, k) = C(n, k-1) + C(n, k) \\
+    &\sum_{j=1}^{k} S(n, j) = \sum_{j=1}^{k} \frac{1}{j!} \sum_{i=0}^{j-1} (-1)^{i} C(j, i) (j-i)^{n} \\
+    &P(n, r) = \frac{n!}{(n-r)!} \\
+    &C(n, r) = \frac{n!}{(n-r)! r!} \\
+\end{align}
+
+\end{document}
+
