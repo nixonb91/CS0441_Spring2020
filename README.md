@@ -1,7 +1,9 @@
 # CS0441_Spring2020
 ### This repository will hold any extra recitation materials for CS 0441 for the Spring 2020 term. 
 
-* Survey for recitation posted in course-info.md (All feedback is anonymous)
+* (04/06/2020) Survey for recitation posted in course-info.md (All feedback is anonymous)
+
+* (04/06/2020) The solution for the practice worksheet on sections 7.1 and 7.2 has been posted!
 
 * (03/28/2020) The practice worksheet for sections 7.1 and 7.2 has been released!
 
