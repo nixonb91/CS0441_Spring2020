@@ -19,4 +19,8 @@ Recitation Time:
  - Zoom: https://pitt.zoom.us/j/5336895067
  - Thursdays, 12:00 PM (Noon) (Eastern Time Zone)
 
+Survey for Recitation:
+
+ - https://www.surveymonkey.com/r/GFPNBTW
+ 
 
