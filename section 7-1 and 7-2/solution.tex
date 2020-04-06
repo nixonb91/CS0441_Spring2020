@@ -1,0 +1,200 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{relsize}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{enumitem}
+
+\hyphenpenalty=10000
+\setlength{\parindent}{0pt}
+
+\newcommand\bicond{\mathrel{\leftrightarrow}}
+\let\union\cup
+\let\intersect\cap
+
+% define environment for answers
+\usepackage{xcolor}
+\newenvironment{answer}{\larger[2]}{}
+
+\begin{document}
+
+\begin{center}
+CS 441: Discrete Structures for Computer Science \\
+{\smaller[1] Spring 2020} \\
+
+\vspace {0.25in}
+
+Sections 7.1 and 7.2
+\end{center}
+
+\vspace{0.25in}
+
+{\smaller[1]
+\textbf{Name:} \hrulefill
+\hspace{1em}
+\textbf{Username (abc123):} \rule{1.25in}{0.4pt}
+
+\null \textbf{Recitation (circle one):}
+\hfill
+}
+
+\begin{enumerate} % start main problems
+
+% PROBLEM 1 (Respectively: #11, #9, and #15 from section 7.1)
+
+\item For the following problems, assume you have a standard deck of 52 cards (4
+suits for each of 13 ranks). Find the probability that a five-card poker hand:
+%
+\begin{enumerate}[itemsep=\fill,after=\vfill\vfill] % start subproblems
+
+\item contains the two of diamonds, the three of spades, the six of hearts, the
+ten of clubs, and the king of hearts.
+
+\begin{answer}
+There is one way to choose this hand, and there are $C(52, 5)$ ways to choose a
+hand of 5. So the answer is $\frac{1}{C(52, 5)}$
+\end{answer}
+
+\item does not contain the queen of hearts.
+
+\begin{answer}
+There are $C(51, 5)$ ways to build a hand without the queen of hearts, and
+$C(52, 5)$ total ways to build a deck. So, our answer is $\frac{C(51, 5)}{C(52,
+5)}$
+\end{answer}
+
+\item contains two pairs. That is, the hand has two cards of one rank, two cards of a second rank, and a fifth card of a third rank.
+
+\begin{answer}
+There are $C(13,2)$ ways to choose the ranks for the two pairs. There are
+$C(4,2)$ ways to select the suits for one pair, and $C(4,2)$ ways to choose the
+other. There are $C(44, 1)$ ways to pick the fifth card, as there will be 44
+cards left that are of neither kind already picked. Thus, the answer is
+$\displaystyle\frac{C(13,2) \cdot C(4,2) \cdot C(4,2) \cdot C(44, 1)}{C(52, 5)}$
+\end{answer}
+
+\end{enumerate} % end subproblems
+
+
+% PROBLEM 2 (7.1 #21)
+
+\item What is the probability that a fair die never comes up an even number when
+it is rolled six times?
+
+\begin{answer}
+Another way of wording this problem is ``What are the odds that you roll six odd
+numbers in a row?'' Assuming this is a six-sided die, this means there are three
+possible odd numbers for every roll. The number of ways we can roll six odd
+numbers in a row is $3^6$. Then, the number of total ways to roll the die is
+$6^6$. Thus, our answer is $\frac{3^6}{6^6}$, which simplifies to
+$\frac{1}{64}$.
+\end{answer}
+
+\vfill
+
+\newpage
+
+
+% PROBLEM 3 (a is 7.1 #25, b is original/adaptation)
+
+\item Consider a lottery where six winning numbers are picked from the range of
+1 to 50, inclusive. The order of the numbers does not matter. Find the
+probability of:
+%
+\begin{enumerate}[itemsep=\fill,after=\vfill] % start subproblems
+
+\item picking all six winning numbers
+
+\begin{answer}
+There is only one possible winning combination, and $C(50, 6)$ ways to choose a
+combination, so the answer is $\frac{1}{C(50, 6)}$
+\end{answer}
+
+\item picking exactly three of the winning numbers
+
+\begin{answer}
+There are $C(6,3)$ ways of picking three of the six winning numbers and
+$C(44,3)$ ways of picking three non-winning numbers from the remaining pool of
+possibilities. Since the total possible numbers are the same, the answer is
+$\frac{C(6,3) \cdot C(44,3)}{C(50, 6)}$
+\end{answer}
+
+\end{enumerate} % end subproblems
+
+
+% PROBLEM 4 (7.2 #29)
+
+\item A group of 6 people go out to lunch, and decide to play the game ``odd
+person out'' to determine who will pay. Each person flips a fair coin. If there
+is a person whose outcome is not the same as that of any other member of the
+group, this person has to pay for everyone's lunch. For example, if one person
+gets tails and everyone else gets heads, the person with tails pays. What is the
+probability that there is an odd person out after the coins are flipped once?
+
+\begin{answer}
+We start by counting the number of permutations where a loss occurs. There are
+two ways to lose this game: you get heads and everyone else gets tails, or you
+get tails and everyone else gets heads. One losing permutation is only the first
+person gets tails, in another only the second person gets tails, etc.\ until we
+get to the sixth person. That is six losing permutations. Plus, six more for the
+cases where one person flips heads and the other five flip tails. That's 12
+losing permutations. The total number of possible permutations is $2^6$. Our
+answer is $\frac{12}{2^6}$, which simplifies to $\frac{3}{16}$
+\end{answer}
+
+\vfill
+\vfill
+
+\newpage
+
+
+% PROBLEM 5 (a is 7.2, #25 and b is original/adaptation)
+
+\item What is the conditional probability that a randomly-generated bit string
+of length four contains at least two consecutive 0s, given that:
+%
+\begin{enumerate}[itemsep=\fill,after=\vfill] % start subproblems
+
+\item the first bit is a 1?
+
+\begin{answer}
+To find conditional probability, we use the formula $\frac{P(E \intersect
+F)}{P(F)}$. Let $E =$ ``the bit string has at least 2 consecutive 0's'', and let
+$F =$ ``the first bit of the bit string is a 1.'' By writing out all cases, we
+find that there are 3 elements in the set $E \intersect F$, which is \{1000,
+1100, 1001\}. Also, we can say there are 16 total bit strings possible ($2^4$).
+Thus, $P(E \intersect F) = \frac{3}{16}$ There are $2^3$ cases in the set of
+$F$, because only the first bit of the string is decided, while the last three
+can be 0 or 1. Thus $P(F)$ = $\frac{8}{16}$ Our final answer, simplified, is
+$\frac{3}{8}$.
+\end{answer}
+
+\item The third bit is a 0?
+
+\begin{answer}
+Similar strategy to the previous problem, the only difference is in counting the
+number of items in the set $E \intersect F$, which is \{1100, 1000, 0000, 1001,
+0001, 0100\}, i.e., six items. Final, simplified answer is $\frac{3}{4}$
+\end{answer}
+
+\end{enumerate} % end subproblems
+
+
+% PROBLEM 6 (Original problem)
+
+\item Find the probability that a family with four children has two or three
+girls, if the chance of having a boy is 30\%. Assume the sexes of each child are
+independent.
+
+\begin{answer}
+This problem can be solved with the Bernoulli formula and the sum rule. $C(4, 2)
+\cdot (0.7)^2 \cdot (0.3)^2 + C(4,3) \cdot (0.7)^3 \cdot (0.3)^1 = 0.2646 +
+0.4116 = 0.6762$
+\end{answer}
+
+\vfill
+
+\end{enumerate} % end main problems
+
+\end{document}
+
