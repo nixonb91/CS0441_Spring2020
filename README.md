@@ -1,6 +1,8 @@
 # CS0441_Spring2020
 ### This repository will hold any extra recitation materials for CS 0441 for the Spring 2020 term. 
 
+* (04/16/2020) The solution for the practice worksheet on the remaining sections has been posted!
+
 * (04/14/2020) The practice worksheet for the remaining sections has been released!
 
 * (04/09/2020) The solution for the practice worksheet on sectiosn 7.3 and 8.5 has been posted!
