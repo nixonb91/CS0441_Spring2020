@@ -10,17 +10,17 @@ UTA: Brian Nixon
 
 Office Hours:
 
- - Zoom: https://pitt.zoom.us/j/5336895067
+ - Zoom: Email Brian
  - Thursdays, 1:00 PM - 4:00 PM (Eastern Time Zone)
  - ... or by appointment
 
 Recitation Time:
 
- - Zoom: https://pitt.zoom.us/j/5336895067
+ - Zoom: Email Brian
  - Thursdays, 12:00 PM (Noon) (Eastern Time Zone)
 
 Survey for Recitation:
 
- - https://www.surveymonkey.com/r/GFPNBTW
+ - No longer available
  
 
